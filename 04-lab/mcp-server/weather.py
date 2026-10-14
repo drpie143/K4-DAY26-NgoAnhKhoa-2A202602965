@@ -1,7 +1,16 @@
-from typing import Any
 import asyncio
-import httpx
 import os
+import sys
+from typing import Any
+
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8")
+
+from dotenv import find_dotenv, load_dotenv
+
+load_dotenv(find_dotenv(), override=True)
+
+import httpx
 from mcp.server.fastmcp import FastMCP
 
 # Initialize FastMCP server
@@ -141,12 +150,9 @@ print("🔧 Available tools: get_current_weather, get_forecast, health_check")
 if __name__ == "__main__":
     import sys
     
-    is_cloud_run = bool(os.getenv("PORT"))
-    is_standalone = len(sys.argv) == 1 and sys.stdin.isatty()
-    
-    if is_cloud_run or is_standalone:
-        print(f"🚀 Starting MCP server on http://0.0.0.0:{port}/mcp")
-        mcp.run(transport="streamable-http")
-    else:
+    if "--stdio" in sys.argv:
         print("Starting FastMCP server in stdio mode for local client", file=sys.stderr)
         mcp.run()
+    else:
+        print(f"🚀 Starting MCP server on http://0.0.0.0:{port}/mcp")
+        mcp.run(transport="streamable-http")
