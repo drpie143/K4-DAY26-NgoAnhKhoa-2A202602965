@@ -1,5 +1,10 @@
 # Phân biệt MCP và Function Calling
 
+> **Thông tin nộp bài:**
+> - **Học viên:** Ngô Anh Khoa
+> - **MSSV:** 2A202602965
+> - **Khóa học:** VIN AI - K4 (Day 26)
+
 Đây là hai khái niệm hay bị nhầm lẫn nhưng thực ra ở **hai tầng khác nhau**, và **bổ sung cho nhau** chứ không thay thế.
 
 ## Cấu trúc repo

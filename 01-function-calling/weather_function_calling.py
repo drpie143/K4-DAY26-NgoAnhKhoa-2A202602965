@@ -9,6 +9,15 @@ Cách chạy:
     python weather_function_calling.py
 """
 
+import sys
+
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8")
+
+from dotenv import load_dotenv, find_dotenv
+
+load_dotenv(find_dotenv(), override=True)
+
 from google import genai
 from google.genai import types
 
